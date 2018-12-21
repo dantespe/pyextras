@@ -1,10 +1,32 @@
 #! /usr/bin/env python
 
-class BaseCacheError(Exception):
+# Basic Cache Errors
+class CacheError(Exception):
     pass
 
-class CacheKeyError(BaseCacheError):
+class CacheKeyError(CacheError):
     pass
 
-class CacheDatetimeError(BaseCacheError):
+class CacheDatetimeError(CacheError):
+    pass
+
+
+# DiskCache Errors
+class DiskCacheError(CacheError):
+    pass
+
+
+class DiskCacheNotAFileError(DiskCacheError):
+    pass
+
+class DiskCacheFileNotFoundError(DiskCacheError):
+    pass
+
+class DiskCacheDirectoryNotFoundError(DiskCacheError):
+    pass
+
+class DiskCacheLoadError(DiskCacheError):
+    pass
+
+class DiskCacheStoreError(DiskCacheError):
     pass
