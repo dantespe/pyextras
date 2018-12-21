@@ -28,6 +28,7 @@ class Cache:
     def __eq__(self, other):
         return self._data == other._data
 
+
     def add(self, key, value=None, expires=None, timeDelta=1):
         if expires and not isinstance(expires, datetime):
             raise CacheDatetimeError(

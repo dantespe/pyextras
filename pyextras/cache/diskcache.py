@@ -29,16 +29,21 @@ class DiskCache(Cache):
                 "The provided path is a directory and not a file."
             )
 
+        errors = []
+
         # path exists and is a valid file
         # Attmpet to load in to memory
         with open(path, 'rb') as obj:
             try:
                 self._data = pickle.load(obj)
-            except pickle.PickleError:
-                raise DiskCacheLoadError(
-                    "The provided path was unable to be loaded into memory.\n"
-                    "This is common when the file was corrupted."
-                )
+            except pickle.PickleError as e:
+                errors.append(e)
+
+        if errors:
+            raise DiskCacheLoadError(
+                "The provided path was unable to be loaded into memory.\n"
+                "This is common when the file was corrupted."
+            )
 
     def load(self, filename, directory=""):
         self._load(filename, directory)
@@ -50,13 +55,17 @@ class DiskCache(Cache):
 
         path = os.path.join(directory, filename)
 
+        errors = []
         with open(path, 'wb') as obj:
             try:
                 pickle.dump(self._data, obj)
-            except pickle.PickleError:
-                raise DiskCacheStoreError(
-                    "Failed to store to the provided path."
-                )
+            except pickle.PickleError as e:
+                errors.append(e)
+
+        if errors:
+            raise DiskCacheStoreError(
+                "Failed to store to the provided path."
+            )
 
     def store(self, filename, directory=""):
         self._store(filename, directory)

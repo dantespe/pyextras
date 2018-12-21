@@ -11,6 +11,8 @@ setup(
     description='Extra Python utilities.',
     author='Dante Spencer',
     author_email='dantespe@umich.edu',
-    # packages=find_packages()
+    install_requires=[
+        'pyaes'
+    ],
     packages=['pyextras', 'pyextras.cache',]
 )

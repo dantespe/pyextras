@@ -15,7 +15,6 @@ class CacheDatetimeError(CacheError):
 class DiskCacheError(CacheError):
     pass
 
-
 class DiskCacheNotAFileError(DiskCacheError):
     pass
 
@@ -29,4 +28,16 @@ class DiskCacheLoadError(DiskCacheError):
     pass
 
 class DiskCacheStoreError(DiskCacheError):
+    pass
+
+
+# EncryptedDiskCache Errors
+class EncryptedDiskCacheError(DiskCacheError):
+    pass
+
+
+class EncryptedDiskCacheDirectoryNotFoundError(DiskCacheDirectoryNotFoundError):
+    pass
+
+class EncryptedDiskCacheNotAFileError(DiskCacheNotAFileError):
     pass
