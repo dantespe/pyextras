@@ -29,15 +29,36 @@ class Cache:
         return self._data == other._data
 
 
-    def add(self, key, value=None, expires=None, timeDelta=1):
+    def __iter__(self):
+        return iter(self._data)
+
+
+    def __getitem__(self, key):
+        return self.get(key)
+
+
+    def __setitem__(self, key, value):
+        return self.add(key, value)
+
+
+    def __delitem__(self, key):
+        return self.remove(key)
+
+
+    def add(self, key, value=None, expires=None, timeDelta=timedelta(days=1)):
         if expires and not isinstance(expires, datetime):
             raise CacheDatetimeError(
                 "`expires` argument must be None or a datetime.datetime object."
             )
 
+        if not isinstance(timeDelta, timedelta):
+            raise CacheDatetimeError(
+                "`timedelta` is not an instance of datetime.timedelta object."
+            )
+
         self._data[key] = {
             'value': value,
-            'expires': expires if expires else datetime.now() + timedelta(timeDelta)
+            'expires': expires if expires else datetime.now() + timeDelta
         }
 
 

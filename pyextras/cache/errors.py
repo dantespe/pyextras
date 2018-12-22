@@ -35,7 +35,6 @@ class DiskCacheStoreError(DiskCacheError):
 class EncryptedDiskCacheError(DiskCacheError):
     pass
 
-
 class EncryptedDiskCacheDirectoryNotFoundError(DiskCacheDirectoryNotFoundError):
     pass
 
