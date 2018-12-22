@@ -5,7 +5,7 @@ This python package represents all the extra modules I use in some of projects.
 Currently, the submodules are supported:
 * `cache`
 
-  A simple caching interface to get the most of our of your code. You can read more it [here](https://github.com/dantespe/pyextras/tree/master/pyextras/cache/readme.md).
+  A simple caching interface to get the most of our of your code. You can read more it [here](https://github.com/dantespe/pyextras/blob/master/pyextras/cache/README.md).
 
 
 ## Installation
