@@ -19,7 +19,7 @@ There are three types of caches currently implemented:
 ### `Cache`
 
 Here is an example of using the simple, time-based `Cache`.
-```
+```python
 #! /usr/bin/env python
 from pyextras.cache import Cache
 from datetime import datetime, timedelta
@@ -62,7 +62,7 @@ c[100]
 ### `DiskCache`
 
 Here is an example of how to use `store` and `load` functionality of `DiskCache`.
-```
+```python
 #! /usr/bin/env python
 from pyextras.cache import DiskCache
 
@@ -94,7 +94,7 @@ By default, to protect your encryption keys from being exposed in the source cod
 
 When you use an encryption key directly, a `EncryptedDiskCacheWarning` is raised. You can suppress these warnings using `suppress_warnings=True` or by setting the environment variable `PYEXTRAS_NO_WARNINGS=True`.
 
-```
+```python
 #! /usr/bin/env python
 from pyextras.cache import EncryptedDiskCache
 
@@ -105,4 +105,4 @@ e_warning_raised = EncryptedDiskCache("uJ9xwCwI77tBSBA3", direct=True)
 e_no_warning = EncryptedDiskCache("EncryptedDiskCache", direct=True, suppress_warnings=True)
 ```
 
-From here, the `EncryptedDiskCache` works the same as `DiskCache`. 
+From here, the `EncryptedDiskCache` works the same as `DiskCache`.
