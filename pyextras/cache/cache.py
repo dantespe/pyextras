@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
-from datetime import datetime, timedelta
+from datetime import datetime
+from datetime import timedelta as td
 from .errors import CacheKeyError, CacheDatetimeError
 
 
@@ -45,20 +46,20 @@ class Cache:
         return self.remove(key)
 
 
-    def add(self, key, value=None, expires=None, timeDelta=timedelta(days=1)):
+    def add(self, key, value=None, expires=None, timedelta=td(days=1)):
         if expires and not isinstance(expires, datetime):
             raise CacheDatetimeError(
                 "`expires` argument must be None or a datetime.datetime object."
             )
 
-        if not isinstance(timeDelta, timedelta):
+        if not isinstance(timedelta, td):
             raise CacheDatetimeError(
                 "`timedelta` is not an instance of datetime.timedelta object."
             )
 
         self._data[key] = {
             'value': value,
-            'expires': expires if expires else datetime.now() + timeDelta
+            'expires': expires if expires else datetime.now() + timedelta
         }
 
 

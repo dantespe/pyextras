@@ -22,12 +22,13 @@ Here is an example of using the simple, time-based `Cache`.
 ```python
 #! /usr/bin/env python
 from pyextras.cache import Cache
-from datetime import datetime, timedelta
+from datetime import datetime
+from datetime import timedelta as td
 c = Cache()
 
 # Create a key-value pair in the cache with key "key" and value: '{"data": 5}'.
 # The key-value pair will expire in 1 hour.
-c.add("key", value={"data": 5}, timeDelta=timedelta(hours=1))
+c.add("key", value={"data": 5}, timedelta=td(hours=1))
 
 # This would output 1
 len(c)
@@ -46,7 +47,7 @@ c.isExpired("key")
 False
 
 # Add expired data
-c.add("expired", value=10, timeDelta=timedelta(hours=-1))
+c.add("expired", value=10, timedelta=td(hours=-1))
 
 # outputs True
 c.isExpired("expired")
