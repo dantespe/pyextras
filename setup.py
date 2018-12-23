@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='pyextras',
-    version='0.0.6',
+    version='0.0.7',
     description='Extra Python utilities.',
     author='Dante Spencer',
     author_email='dantespe@umich.edu',
