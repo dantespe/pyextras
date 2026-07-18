@@ -83,6 +83,7 @@ class EncryptedDiskCache(DiskCache):
                 "The provided path is not a file."
             )
 
+        
         pickledFile = create_unique_filename(directory=directory)
         mode = pyaes.AESModeOfOperationCTR(self._aes_key)
         errors = []

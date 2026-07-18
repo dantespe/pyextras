@@ -50,7 +50,7 @@ class DiskCache(Cache):
 
 
     def _store(self, filename, directory):
-        if directory and not os.path.isdir(path):
+        if directory and not os.path.isdir(filename):
             raise DiskCacheDirectoryNotFoundError("The provided directory does not exist.")
 
         path = os.path.join(directory, filename)
